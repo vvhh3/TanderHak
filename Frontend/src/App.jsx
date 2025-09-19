@@ -3,6 +3,8 @@ import Fuse from "fuse.js";
 import './App.css'
 import { MainPage } from './components/MainPage.jsx';
 import AddKs from './components/AddKSForm.jsx';
+import {MainPage} from './components/MainPage/MainPage.jsx';
+
 function App() {
 
 
