@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Fuse from "fuse.js";
 import './App.css'
+import {MainPage} from './components/MainPage.jsx';
 
 function App() {
 
@@ -52,28 +53,7 @@ const fuse = new Fuse(suggestions, {
   };
   return (
     <>
-      <div style={{ width: "300px", margin: "20px auto" }}>
-      <input
-        type="text"
-        value={input}
-        onChange={handleChange}
-        placeholder="Введите запрос..."
-        style={{ width: "100%", padding: "8px", fontSize: "16px" }}
-      />
-      {results.length > 0 && (
-        <ul style={{ border: "1px solid #ccc", padding: "5px", marginTop: "0" }}>
-          {results.map((r, i) => (
-            <li
-              key={i}
-              onClick={() => handleSuggestionClick(r)}
-              style={{ cursor: "pointer", padding: "5px" }}
-            >
-              {r}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      <div>ПРИВЕТ ДУРАК</div>
     </>
   )
 }
