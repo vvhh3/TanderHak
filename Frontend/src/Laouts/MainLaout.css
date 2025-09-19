@@ -1,0 +1,16 @@
+body{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin: 0px;
+}
+.header{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+
+    height: 100px;
+}
+.imageLogo{
+    height: 100px;
+    width: 190px;
+    margin-left: 20px;
+    background-color: white;
+    border: solid 0px;
+}
