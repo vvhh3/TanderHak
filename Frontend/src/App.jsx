@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Fuse from "fuse.js";
 import './App.css'
 import {MainPage} from './components/MainPage/MainPage.jsx';
+import {Contract} from './components/Contract/Contract.jsx';
 
 function App() {
 
@@ -53,7 +54,7 @@ const fuse = new Fuse(suggestions, {
   };
   return (
     <>
-      <div style={{ width: "300px", margin: "20px auto" }}>
+      {/* <div style={{ width: "300px", margin: "20px auto" }}>
       <input
         type="text"
         value={input}
@@ -74,7 +75,8 @@ const fuse = new Fuse(suggestions, {
           ))}
         </ul>
       )}
-    </div>
+    </div> */}
+    <Contract></Contract>
     </>
   )
 }
