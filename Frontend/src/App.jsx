@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import Fuse from "fuse.js";
 import './App.css'
-import { MainPage } from './components/MainPage.jsx';
-import AddKs from './components/AddKSForm.jsx';
+
+import AddKsForm from './components/KsForm/AddKSForm.jsx';
 import {MainPage} from './components/MainPage/MainPage.jsx';
 import {Contract} from './components/Contract/Contract.jsx';
 
@@ -58,7 +58,7 @@ function App() {
   };
   return (
     <>
-    <AddKs/>
+    <AddKsForm/>
       <div style={{ width: "300px", margin: "20px auto" }}>
         <input
           type="text"
@@ -81,28 +81,6 @@ function App() {
           </ul>
         )}
       </div>
-      {/* <div style={{ width: "300px", margin: "20px auto" }}>
-      <input
-        type="text"
-        value={input}
-        onChange={handleChange}
-        placeholder="Введите запрос..."
-        style={{ width: "100%", padding: "8px", fontSize: "16px" }}
-      />
-      {results.length > 0 && (
-        <ul style={{ border: "1px solid #ccc", padding: "5px", marginTop: "0" }}>
-          {results.map((r, i) => (
-            <li
-              key={i}
-              onClick={() => handleSuggestionClick(r)}
-              style={{ cursor: "pointer", padding: "5px" }}
-            >
-              {r}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div> */}
     <Contract></Contract>
     </>
   )
