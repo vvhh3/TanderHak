@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './MainPage.css';
+import axios from 'axios';
 import Fuse from "fuse.js";
 export function MainPage() {
     const suggestions = [
@@ -20,7 +21,20 @@ export function MainPage() {
 
     const [input, setInput] = useState("");
     const [results, setResults] = useState([]);
+    const [response, setResponse] = useState("");
 
+    const testAPI = async () => {
+        try {
+            console.log(input)
+            const res = await axios.post("http://45.150.8.176:8080/api/chat", {
+                user_id: 1,
+                message: input
+            });
+            setResponse(JSON.stringify(res.data, null, 2));
+        } catch (err) {
+            setResponse(JSON.stringify(err.response?.data || err.message, null, 2));
+        }
+    };
     // Обработка ввода текста
     const handleChange = (e) => {
         const value = e.target.value;
@@ -75,6 +89,8 @@ export function MainPage() {
                             ))}
                         </div>
                     )}
+                    <button onClick={testAPI}>Отправить</button>
+                    <pre>{response}</pre>
                 </div>
             </div>
         </>
