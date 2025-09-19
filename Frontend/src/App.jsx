@@ -4,57 +4,71 @@ import './App.css'
 
 function App() {
 
-const suggestionsList = ["поиск", "найди", "поищи", "создай", "добавь", "сделай"];
 
-const fuse = new Fuse(suggestionsList, {
-  includeScore: true,
-  threshold: 0.5, 
+const suggestions = [
+  "поиск",
+  "найди",
+  "поищи",
+  "создай",
+  "добавь",
+  "сделай",
+];
+
+const fuse = new Fuse(suggestions, {
+  threshold: 0.4, // чувствительность (0 - точное совпадение, 1 - много вариантов)
+  distance: 50,   // максимальная "дистанция" ошибки
 });
- const [input, setInput] = useState("");
+
+  const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
 
+  // Обработка ввода текста
   const handleChange = (e) => {
     const value = e.target.value;
     setInput(value);
 
-    if (value.trim() === "") {
+    // Берём последнее слово
+    const words = value.trim().split(/\s+/);
+    const lastWord = words[words.length - 1] || "";
+
+    if (!lastWord) {
       setResults([]);
       return;
     }
 
-    const matches = fuse.search(value);
+    // Ищем все совпадения для последнего слова
+    const matches = fuse.search(lastWord);
     setResults(matches.map((match) => match.item));
   };
 
-  // При клике на подсказку → вставляем её в input
+  // При клике на подсказку → заменяем последнее слово
   const handleSuggestionClick = (suggestion) => {
-    setInput(suggestion);
+    const words = input.trim().split(/\s+/);
+    words[words.length - 1] = suggestion;
+    const newValue = words.join(" ");
+
+    setInput(newValue + " "); // добавляем пробел для следующего слова
     setResults([]); // очищаем подсказки
   };
   return (
     <>
-      <div style={{ maxWidth: "400px", margin: "20px auto", fontFamily: "sans-serif" }}>
+      <div style={{ width: "300px", margin: "20px auto" }}>
       <input
         type="text"
         value={input}
         onChange={handleChange}
-        placeholder="Напиши что-нибудь..."
+        placeholder="Введите запрос..."
         style={{ width: "100%", padding: "8px", fontSize: "16px" }}
       />
-
       {results.length > 0 && (
-        <ul style={{ border: "1px solid #ccc", padding: "8px", marginTop: "5px", listStyle: "none" }}>
-          {results.map((suggestion, idx) => (
+        <ul style={{ border: "1px solid #ccc", padding: "5px", marginTop: "0" }}>
+          {results.map((r, i) => (
             <li
-              key={idx}
-              onClick={() => handleSuggestionClick(suggestion)}
-              style={{
-                padding: "5px",
-                cursor: "pointer",
-                borderBottom: "1px solid #eee"
-              }}
+              key={i}
+              onClick={() => handleSuggestionClick(r)}
+              style={{ cursor: "pointer", padding: "5px" }}
             >
-              {suggestion}
+              {r}
             </li>
           ))}
         </ul>
