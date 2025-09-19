@@ -1,4 +1,5 @@
 import './MainPage.css';
+import { BrowserRouter, Scripts } from "react-router-dom";
 export function MainPage(){
     
     return(
