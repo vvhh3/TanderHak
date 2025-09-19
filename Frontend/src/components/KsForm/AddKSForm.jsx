@@ -56,17 +56,6 @@ const AddKSForm = () => {
   };
 
   return (
-    <div>
-      <h2>КС</h2>
-      <input placeholder="Название КС" value={ksForm.name} onChange={e => setKsForm({ ...ksForm, name: e.target.value })} />
-      <input placeholder="Сумма КС" type="number" value={ksForm.amount} onChange={e => setKsForm({ ...ksForm, amount: e.target.value })} />
-      <input placeholder="Категория ПП" value={ksForm.category} onChange={e => setKsForm({ ...ksForm, category: e.target.value })} />
-      <input placeholder="Имя заказчика" value={ksForm.customerName} onChange={e => setKsForm({ ...ksForm, customerName: e.target.value })} />
-      <input placeholder="ИНН заказчика" type="number" value={ksForm.customerINN} onChange={e => setKsForm({ ...ksForm, customerINN: e.target.value })} />
-      <input placeholder="Имя поставщика" value={ksForm.supplierName} onChange={e => setKsForm({ ...ksForm, supplierName: e.target.value })} />
-      <input placeholder="ИНН поставщика" type="number" value={ksForm.supplierINN} onChange={e => setKsForm({ ...ksForm, supplierINN: e.target.value })} />
-      <input placeholder="Закон основание" value={ksForm.legalBasis} onChange={e => setKsForm({ ...ksForm, legalBasis: e.target.value })} />
-      <button onClick={saveKS}>Добавить КС</button>
       <div className="blockContractConteiner">
         <div className="blockContract"> 
             <div className="hContract">
@@ -104,16 +93,11 @@ const AddKSForm = () => {
                 <label className="labelBlock">Закон основание </label>
                 <input className='searchInput' placeholder="Закон основание" value={ksForm.legalBasis} onChange={e => setKsForm({ ...ksForm, legalBasis: e.target.value })}></input>
             </div>
-            {/* <div className='searchInputBlock'> 
-                <label className="labelBlock">Закон-основание </label>
-                <input className='searchInput'></input>
-            </div> */}
             <div className="buttonBlock">
-                {/* <button className="buttonCancel">Отмена</button> */}
+                <button className="buttonCancel">Отмена</button>
                 <button className="buttonAccept" onClick={saveKS}>Создать</button>
             </div>
         </div>
-    </div>
     </div>
   );
 };

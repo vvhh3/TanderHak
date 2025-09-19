@@ -19,7 +19,7 @@ function App() {
     "добавь",
     "сделай",
   ];
-
+  
   const fuse = new Fuse(suggestions, {
     threshold: 0.4, // чувствительность (0 - точное совпадение, 1 - много вариантов)
     distance: 50,   // максимальная "дистанция" ошибки
@@ -58,8 +58,9 @@ function App() {
   };
   return (
     <>
+    <MainPage/>
     <AddKsForm/>
-      <div style={{ width: "300px", margin: "20px auto" }}>
+      {/* <div style={{ width: "300px", margin: "20px auto" }}>
         <input
           type="text"
           value={input}
@@ -80,7 +81,7 @@ function App() {
             ))}
           </ul>
         )}
-      </div>
+      </div> */}
     <Contract></Contract>
     </>
   )
