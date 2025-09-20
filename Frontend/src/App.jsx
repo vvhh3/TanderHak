@@ -8,6 +8,8 @@ import FormCompany from './components/AddFormCompany/FormCompany.jsx';
 import Registration from './components/Registration/Registration.jsx';
 // import { Contract } from './components/Contract/Contract.jsx';
 // import { Table } from './components/Table/Table.jsx';
+import { Contract } from './components/Contract/Contract.jsx';
+// import { Table } from './components/Table/Table.jsx';
 import Cookies from 'js-cookie'
 import { ContractTable } from './components/ContractTable/ContractTable.jsx';
 import { GeneralInformation } from './components/ContractTable/GeneralInformation.jsx';
@@ -41,12 +43,6 @@ function App() {
             <Route path="/company" element={<FormCompany  companys={companys} setCompanys={setCompanys}/>} />
             {/* <Route path="/Table" element={<Table />} /> */}
             <Route path='/Registration' element={<Registration onLogin={setUsers} users={users} setUsers={setUsers}/>}/>
-            <Route path="/ContractTable" element={<ContractTable />}>
-            <Route path="/ContractTable/GeneralInformation" element={<GeneralInformation />} />
-            <Route path="/ContractTable/Customer" element={<Customer />} />
-            <Route path="/ContractTable/Executor" element={<Executor />} />
-            <Route path="/ContractTable/Price" element={<Price />} />
-            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
