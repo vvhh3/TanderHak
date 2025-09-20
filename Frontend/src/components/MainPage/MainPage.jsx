@@ -56,13 +56,13 @@ export function MainPage() {
                 user_id: 1,
                 message: input,
             });
-
+            console.log(res)
             const intention = res.data.response.toLowerCase();
 
             if (intention.includes("создать")) {
                 navigate("/create");
-            } else if (intention.includes("редактировать")) {
-                navigate("/edit");
+            } else if (intention.includes("сделай")) {
+                navigate("/company");   
             } else {
                 alert("Намерение не распознано: " + intention);
             }
@@ -71,51 +71,8 @@ export function MainPage() {
             alert("Ошибка при отправке запроса");
         }
     };
-    // const [input, setInput] = useState("");
-    // const [results, setResults] = useState([]);
-    // const [response, setResponse] = useState("");
-
-    // const testAPI = async () => {
-    //     try {
-    //         console.log(input)
-    //         const res = await axios.post("http://45.150.8.176:8080/api/chat", {
-    //             user_id: 1,
-    //             message: input
-    //         });
-    //         setResponse(JSON.stringify(res.data, null, 2));
-    //     } catch (err) {
-    //         setResponse(JSON.stringify(err.response?.data || err.message, null, 2));
-    //     }
-    // };
-    // // Обработка ввода текста
-    // const handleChange = (e) => {
-    //     const value = e.target.value;
-    //     setInput(value);
-
-    //     // Берём последнее слово
-    //     const words = value.trim().split(/\s+/);
-    //     const lastWord = words[words.length - 1] || "";
-
-    //     if (!lastWord) {
-    //         setResults([]);
-    //         return;
-    //     }
-
-    //     // Ищем все совпадения для последнего слова
-    //     const matches = fuse.search(lastWord);
-    //     setResults(matches.map((match) => match.item));
-    // };
-
-    // // При клике на подсказку → заменяем последнее слово
-    // const handleSuggestionClick = (suggestion) => {
-    //     const words = input.trim().split(/\s+/);
-    //     words[words.length - 1] = suggestion;
-    //     const newValue = words.join(" ");
-
-    //     setInput(newValue + " "); // добавляем пробел для следующего слова
-    //     setResults([]); // очищаем подсказки
-    // };
-    return (
+   
+       return (
         <>
             {/* <div className='mainPage'>
                 <div className='hearderMainPage'>

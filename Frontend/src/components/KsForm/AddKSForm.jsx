@@ -18,19 +18,13 @@ const AddKSForm = () => {
     legalBasis: ""
   });
 
-  // ================================
-  // Функции для будущего бэка
-  // ================================
-
   const saveKS = async () => {
     try {
       const payload = { ...ksForm, amount: Number(ksForm.amount) || 0 };
 
-      // ================================
-      // В будущем здесь будет POST-запрос на создание КС
-      // const res = await axios.post("http://backend-server/api/ks", payload);
+      // const res = await axios.post("http://45.150.8.176:8080/api/chat", payload);
       // setKsList([...ksList, res.data]);
-      // ================================
+
       const newKS = { id: Date.now(), ...payload };
       setKsList([...ksList, newKS]);
       console.log("newKS:", newKS);
