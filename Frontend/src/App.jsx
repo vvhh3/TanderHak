@@ -14,6 +14,7 @@ import { GeneralInformation } from './components/ContractTable/GeneralInformatio
 import { Customer } from './components/ContractTable/Customer.jsx';
 import { Executor } from './components/ContractTable/Executor.jsx';
 import { Price } from './components/ContractTable/Price.jsx';
+
 function App() {
 
   const [companys,setCompanys] = useState([])
