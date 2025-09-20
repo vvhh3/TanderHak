@@ -1,12 +1,11 @@
+
 import { useState } from 'react';
 import './MainPage.css';
 import axios from 'axios';
 import Fuse from "fuse.js";
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter, Scripts } from "react-router-dom";
-
 import { ReactTyped } from "react-typed";
-
 export function MainPage() {
     const suggestions = [
         "поиск", "найди", "поищи", "ищи", "найти", "покажи", "отыщи", "отыскать", "как", "где",// Поиск
@@ -22,7 +21,7 @@ export function MainPage() {
         "найди пользователя ивана и поменяй почту на (вставить на любую почту)",
         "создай профиль сотруднику ивану",
         "удали профиль сотруднику ивану",
-        "найди профиль компании озон и телефоном +71111111111",
+        ,
     ];
 
 
@@ -140,6 +139,24 @@ export function MainPage() {
                         backSpeed={30}   // скорость удаления (если есть цикл)
                         loop={true}     // повторять или нет
                     />
+
+            </div>
+            <div className="chatWindow">
+                {messages.map((msg, i) => (
+                    <div key={i} className={`message ${msg.role}`}>
+                        <span className="bubble">{msg.text}</span>
+                    </div>
+                ))}
+            </div>
+                
+            <div className="searchInputBlock">
+                <div className='typed'>
+                     <ReactTyped
+                        strings={suggestions}
+                        typeSpeed={50}   // скорость печати
+                        backSpeed={30}   // скорость удаления (если есть цикл)
+                        loop={true}     // повторять или нет
+                    />
                 </div>
                 <input
                     type="text"
@@ -165,6 +182,35 @@ export function MainPage() {
 
 
                 <button onClick={handleSubmit} className="sendButton">
+                    Отправить
+                </button>
+            </div>
+        </div>
+    );
+                <input
+                    type="text"
+                    value={input}
+                    onChange={handleChange}
+                    placeholder="Введите запрос..."
+                    className="searchInput"
+                />
+
+                {results.length > 0 && (
+                    <ul className="suggestionsList">
+                        {results.map((r, i) => (
+                            <li
+                                key={i}
+                                onClick={() => handleSuggestionClick(r)}
+                                className="suggestionItem"
+                            >
+                                {r}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
+
+    <button onClick={handleSubmit} className="sendButton">
                     Отправить
                 </button>
             </div>

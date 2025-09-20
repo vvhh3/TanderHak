@@ -28,6 +28,7 @@ body {
 .hManePage {
     color: black;
     font-size: 20px;
+    margin-top: 20px;
 }
 
 .pManePage {
@@ -157,4 +158,7 @@ body {
 
 .rating-buttons button:nth-child(2).active {
   color: red;
+.typed{
+  margin-left: 10px;
+}
 }
