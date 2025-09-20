@@ -136,3 +136,25 @@ body {
 .sendButton:hover {
   background: #45a049;
 }
+.rating-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.rating-buttons button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+.rating-buttons button.active {
+  opacity: 1;
+  color: green;
+}
+
+.rating-buttons button:nth-child(2).active {
+  color: red;
+}
