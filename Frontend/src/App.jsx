@@ -16,6 +16,13 @@ import { GeneralInformation } from './components/ContractTable/GeneralInformatio
 import { Customer } from './components/ContractTable/Customer.jsx';
 import { Executor } from './components/ContractTable/Executor.jsx';
 import { Price } from './components/ContractTable/Price.jsx';
+import { GeneralInformationQuotationSessiTable } from './components/QuotationSessiTable/GeneralInformationQuotationSessiTable.jsx';
+import { QuotationSessiTable } from './components/QuotationSessiTable/QuotationSessiTable.jsx';
+import { CustomerQuotationSessiTable } from './components/QuotationSessiTable/CustomerQuotationSessiTable.jsx';
+import { ExecutorQuotationSessiTable } from './components/QuotationSessiTable/ExecutorQuotationSessiTable.jsx';
+import { PriseQuotationSessiTable } from './components/QuotationSessiTable/PriseQuotationSessiTable.jsx';
+import { ProductCard } from './components/ProductCard/ProductCard.jsx';
+
 function App() {
 
   const [companys,setCompanys] = useState([])
@@ -40,8 +47,24 @@ function App() {
       
             <Route path="/create" element={<AddKsForm />} />
             <Route path="/company" element={<FormCompany  companys={companys} setCompanys={setCompanys}/>} />
-            {/* <Route path="/Table" element={<Table />} /> */}
-            <Route path='/Registration' element={<Registration onLogin={setUsers} users={users} setUsers={setUsers}/>}/>
+            
+            <Route path='/Registration' element={<Registration onLogin={setUsers} users={users} setUsers={setUsers}/>}/>\
+
+            <Route path="/ContractTable" element={<ContractTable />}>
+            <Route path="/ContractTable/GeneralInformation" element={<GeneralInformation />} />
+            <Route path="/ContractTable/Customer" element={<Customer />} />
+            <Route path="/ContractTable/Executor" element={<Executor />} />
+            <Route path="/ContractTable/Price" element={<Price />} />
+            </Route>
+
+            <Route path='/QuotationSessiTable'element={<QuotationSessiTable/>}>
+            <Route path='/QuotationSessiTable/GeneralInformation' element={<GeneralInformationQuotationSessiTable/>}/>
+            <Route path='/QuotationSessiTable/Customer' element={<CustomerQuotationSessiTable/>}/>
+            <Route path='/QuotationSessiTable/Executor' element={<ExecutorQuotationSessiTable/>}/>
+            <Route path='/QuotationSessiTable/Price' element={<PriseQuotationSessiTable/>}/>
+            </Route>
+
+              <Route path='/ProductCard' element={<ProductCard/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
