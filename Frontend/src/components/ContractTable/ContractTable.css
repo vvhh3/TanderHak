@@ -23,13 +23,19 @@ body{
     height: 80px;
 }
 .buttonblockTablCap{
-    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+     align-items: center;
+    color: black;
+    font-size: 25px;
+    justify-content: center;
     background-color: #cce2ff ;
     border: solid 0px;
     width: 100%;
 }
-.buttonblockTablCap:active{
-    background-color: blue;
+.buttonblockTablCap:hover{
+    background-color: #9bacc2
+  
 }
 .buttonblockTablCap:focus{
     background-color: #9bacc2
@@ -57,7 +63,7 @@ body{
 }
 .blockLabelBlockSpecifications{
     display: flex;
-     justify-content: space-between;
+    flex-direction: column;
      max-width: 100%;
     
 }
