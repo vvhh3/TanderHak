@@ -2,7 +2,7 @@ import { useState } from "react";
 import './FormCompany.css'
 import axios from "axios";
 const FormCompany = ({companys,setCompanys}) => {
-    const [company, setCompany] = useState({ title: '', type_organiz: '', region: '', kpp: '', ogrn: '', inn: '', description: '' })
+    const [company, setCompany] = useState({ title: '', type_organiz: '',  ogrn: '', inn: '' })
     const saveCompany = async () => {
         try {
             const payload = {

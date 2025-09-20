@@ -23,6 +23,7 @@ import { CustomerQuotationSessiTable } from './components/QuotationSessiTable/Cu
 import { ExecutorQuotationSessiTable } from './components/QuotationSessiTable/ExecutorQuotationSessiTable.jsx';
 import { PriseQuotationSessiTable } from './components/QuotationSessiTable/PriseQuotationSessiTable.jsx';
 import { ProductCard } from './components/ProductCard/ProductCard.jsx';
+import B2Bpurchases from './components/B2Bpurchases/B2Bpurchases.jsx';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
             </Route>
 
               <Route path='/ProductCard' element={<ProductCard/>}/>
+              <Route path='/CreateB2B' element={<B2Bpurchases/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
