@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Fuse from "fuse.js";
 import './App.css'
 import axios from 'axios';
@@ -11,24 +11,35 @@ import FormCompany from './components/AddFormCompany/FormCompany.jsx';
 import Registration from './components/Registration/Registration.jsx';
 import { Contract } from './components/Contract/Contract.jsx';
 import { Table } from './components/Table/Table.jsx';
+import Cookies from 'js-cookie'
 function App() {
+
   const [companys,setCompanys] = useState([])
   const [users,setUsers] = useState([])
+
+  useEffect(() =>{
+    const cookie_user = Cookies.get('user')
+    if(cookie_user){
+      const lastUser = JSON.parse(cookie_user);
+      setUsers([lastUser]);
+    }
+    else{
+      
+    }
+  },[]) 
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route element={<MainLaout />}>
             <Route path="/" element={<MainPage />} />
-            <Route path="/" element={<MainPage/>} />
             <Route path="/create" element={<AddKsForm />} />
             <Route path="/company" element={<FormCompany  companys={companys} setCompanys={setCompanys}/>} />
             <Route path="/Table" element={<Table />} />
-        
+            <Route path='/Registration' element={<Registration onLogin={setUsers} users={users} setUsers={setUsers}/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
-      <Registration users={users} setUsers={setUsers}/>
     </>
   )
 };
