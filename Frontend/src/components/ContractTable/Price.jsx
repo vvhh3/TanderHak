@@ -4,11 +4,8 @@ export function Price(){
     return(
     <div className="blockTabelSpecifications">
         <div className="blockSpecifications">                  
-            <header className="headerBlockSpecifications" >Цена</header>
-            <div className="blockLabelBlockSpecifications">
-                <label className="labelBlockSpecifications">ID CTE:</label>
-                <label className="labelBlockSpecifications">Дата заключения контракта:</label>
-            </div>
+            <header className="headerBlockSpecifications" >Сумма контракта:</header>
+    
         </div>
     </div>
     )

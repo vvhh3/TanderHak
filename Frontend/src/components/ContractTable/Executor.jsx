@@ -3,10 +3,11 @@ export function Executor(){
     return(
      <div className="blockTabelSpecifications">
         <div className="blockSpecifications">                  
-         <header className="headerBlockSpecifications" >Исполнитель</header>
+         <header className="headerBlockSpecifications" >Наименование поставщика:</header>
             <div className="blockLabelBlockSpecifications">
-                <label className="labelBlockSpecifications">ID CTE:</label>
-                <label className="labelBlockSpecifications">Дата заключения контракта:</label>     
+                
+                <label className="labelBlockSpecifications">ИНН поставщика:</label>     
+                <label className="labelBlockSpecifications">Категория ПП первой позиции спецификации:</label>     
             </div>
         </div>
     </div>
