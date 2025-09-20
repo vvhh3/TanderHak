@@ -16,6 +16,7 @@ import { GeneralInformation } from './components/ContractTable/GeneralInformatio
 import { Customer } from './components/ContractTable/Customer.jsx';
 import { Executor } from './components/ContractTable/Executor.jsx';
 import { Price } from './components/ContractTable/Price.jsx';
+
 import { GeneralInformationQuotationSessiTable } from './components/QuotationSessiTable/GeneralInformationQuotationSessiTable.jsx';
 import { QuotationSessiTable } from './components/QuotationSessiTable/QuotationSessiTable.jsx';
 import { CustomerQuotationSessiTable } from './components/QuotationSessiTable/CustomerQuotationSessiTable.jsx';

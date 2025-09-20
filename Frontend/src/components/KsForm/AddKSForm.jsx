@@ -84,8 +84,11 @@ const AddKSForm = () => {
                 <input className='searchInput' placeholder="ИНН поставщика" type="number" value={ksForm.supplierINN} onChange={e => setKsForm({ ...ksForm, supplierINN: e.target.value })}></input>
             </div>
             <div className='searchInputBlock'> 
-                <label className="labelBlock">Закон основание </label>
-                <input className='searchInput' placeholder="Закон основание" value={ksForm.legalBasis} onChange={e => setKsForm({ ...ksForm, legalBasis: e.target.value })}></input>
+              <label className="labelBlock">Закон основания</label>
+                <select value={ksForm.legalBasis} onChange={(e) => setKsForm({...ksForm,legalBasis:e.target.value})}>
+                  <option value={1}>ФЗ №223</option>
+                  <option value={2}>ФЗ №44</option>
+                </select>
             </div>
             <div className="buttonBlock">
                 <button className="buttonCancel">Отмена</button>

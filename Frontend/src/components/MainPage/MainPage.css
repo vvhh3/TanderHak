@@ -1,18 +1,20 @@
-body{
+body {
     display: flex;
     flex-direction: column;
-    background-color: white ;
+    background-color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.mainPage{
+
+.mainPage {
     display: flex;
-    
+
     width: 100%;
     flex-direction: column;
     align-items: center;
-    
+
 }
-.hearderMainPage{
+
+.hearderMainPage {
 
     height: 200px;
     padding-top: 200px;
@@ -20,31 +22,48 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    
+
 }
-.hManePage{
+
+.hManePage {
     color: black;
     font-size: 20px;
 }
-.pManePage{
+
+.pManePage {
     color: black;
     font-size: 20px;
 }
-.searchInputBlock{
+
+.searchInputBlock {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
 }
-.searchInput{
-    border-color: rgb(182, 179, 179);
-    height: 80px;
-    width: 900px;
+
+.searchInput {
+    display: flex;
+    border-color: #d4dbe6;
+    height: 25px;
+    width: 600px;
     padding: 15px;
     font-size: 15pt;
+    margin: 5px;
+    border-radius: 15px;
 }
-.searchInput:hover{
-    border-color: rgb(182, 179, 179); 
+
+.searchInput:hover {
+    border-color: rgb(182, 179, 179);
     background-color: #e7eef7;
     border: solid #e7eef7 1px;
+}
+
+.res {
+
+    padding: "5px"
+}
+
+.res:hover {
+    background-color: rgb(200 200 255) !important;
 }
