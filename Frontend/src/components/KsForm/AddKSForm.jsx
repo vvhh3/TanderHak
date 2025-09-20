@@ -4,7 +4,6 @@ import './ksForm.css'
 
 const AddKSForm = () => {
   const [ksList, setKsList] = useState([]);
-
   const [ksForm, setKsForm] = useState({
     name: "",
     customerName: "",
@@ -17,7 +16,20 @@ const AddKSForm = () => {
     category: "",
     legalBasis: ""
   });
+  //   useEffect(() => {
+  //   const fetchKS = async () => {
+  //     try {
+  //       const res = await axios.get("http://45.150.8.176:8080/api/ks"); // тут твоя ручка
+  //       setKsList(res.data); // сервер должен вернуть массив КС
+  //     } catch (err) {
+  //       console.error("Ошибка при загрузке КС:", err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
+  //   fetchKS();
+  // }, []);
   const saveKS = async () => {
     try {
       const payload = { ...ksForm, amount: Number(ksForm.amount) || 0 };
