@@ -18,8 +18,10 @@ function App() {
         <Routes>
           <Route element={<MainLaout />}>
             <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<MainPage/>} />
             <Route path="/create" element={<AddKsForm />} />
             <Route path="/company" element={<FormCompany  companys={companys} setCompanys={setCompanys}/>} />
+            <Route path="/Table" element={<Table />} />
           </Route>
         </Routes>
       </BrowserRouter>
