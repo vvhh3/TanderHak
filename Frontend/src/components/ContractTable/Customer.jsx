@@ -3,10 +3,10 @@ export function Customer(){
     return(
          <div className="blockTabelSpecifications">
                     <div className="blockSpecifications">                  
-                        <header className="headerBlockSpecifications" >Заказчик</header>
+                        <header className="headerBlockSpecifications" >Наименование заказчика:</header>
                         <div className="blockLabelBlockSpecifications">
-                            <label className="labelBlockSpecifications">ID CTE:</label>
-                            <label className="labelBlockSpecifications">Дата заключения контракта:</label>
+                            
+                            <label className="labelBlockSpecifications">ИНН заказчика:</label>
                         </div>
                     </div>
                 </div>
