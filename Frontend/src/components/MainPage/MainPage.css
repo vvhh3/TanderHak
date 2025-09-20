@@ -67,3 +67,72 @@ body {
 .res:hover {
     background-color: rgb(200 200 255) !important;
 }
+.chatWindow {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 600px;
+}
+
+.message {
+  margin: 5px 0;
+  display: flex;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.bot {
+  justify-content: flex-start;
+}
+
+.bubble {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 70%;
+}
+
+.user .bubble {
+  background: #DCF8C6; /* зелёный */
+}
+
+.bot .bubble {
+  background: #F1F0F0; /* серый */
+}
+
+.suggestionsList {
+  border: 1px solid #ccc;
+  margin-top: 0;
+  list-style: none;
+  padding: 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.suggestionItem {
+  cursor: pointer;
+  padding: 5px;
+  background: white;
+  transition: background 0.2s;
+}
+
+.suggestionItem:hover {
+  background: #e0e0e0;
+}
+
+.sendButton {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #4CAF50;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sendButton:hover {
+  background: #45a049;
+}
