@@ -5,6 +5,8 @@ import Fuse from "fuse.js";
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter, Scripts } from "react-router-dom";
 
+import {ReactTyped} from "react-typed";
+
 export function MainPage() {
     const suggestions = [
         "поиск",
@@ -124,8 +126,19 @@ export function MainPage() {
         <>
             <div className='mainPage'>
                 <div className='hearderMainPage'>
-                    <header className='hManePage'>Привет</header>
-                    <p className='pManePage'>Чем помочь сегодня?</p>
+
+                    {/* <header className='hManePage'>Привет</header>
+                    <p className='pManePage'>Чем помочь сегодня?</p> */}
+
+                     <ReactTyped
+                        strings={[
+                        "Добро пожаловать ",
+                        "Чем помочь сегодня?"
+                        ]}
+                        typeSpeed={50}   // скорость печати
+                        backSpeed={30}   // скорость удаления (если есть цикл)
+                        loop={false}     // повторять или нет
+                    />
                 </div>
                 <div className='searchInputBlock'>
                     <input
