@@ -1,0 +1,66 @@
+body{
+ display: flex;
+    flex-direction: column;
+    background-color: white ;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   
+}
+.blockProductaConteiner{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+}
+.blockProducta{
+  border: solid #d4dbe6 2px;
+    padding: 20px;
+    max-width: 650px;
+}
+.hContract{
+display: flex;
+    font-size: 30px;
+    font-weight:bolder;
+    align-items: center;
+}
+.searchInputBlock{
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+}
+.labelBlock{
+    display: block;
+    margin: 20px;
+}
+.searchInput{
+    display: block;
+    margin: 20px;
+}
+.buttonBlock{
+    display: flex;
+    justify-content: space-between;
+    margin: 25px;
+}
+.buttonCancel{
+    background-color: #fc0d05;
+    width: 120px;
+    border: none;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+.buttonAccept{
+    background-color: #0568fc;
+    width: 150px;
+    border: none;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+.buttonAccept:hover{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+.buttonCancel:hover{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}

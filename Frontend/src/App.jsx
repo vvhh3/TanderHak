@@ -6,9 +6,9 @@ import { MainPage } from './components/MainPage/MainPage.jsx';
 import MainLaout from './Laouts/MainLaout.jsx';
 import FormCompany from './components/AddFormCompany/FormCompany.jsx';
 import Registration from './components/Registration/Registration.jsx';
-// import { Contract } from './components/Contract/Contract.jsx';
+
 // import { Table } from './components/Table/Table.jsx';
-import { Contract } from './components/Contract/Contract.jsx';
+
 // import { Table } from './components/Table/Table.jsx';
 import Cookies from 'js-cookie'
 import { ContractTable } from './components/ContractTable/ContractTable.jsx';
@@ -23,7 +23,8 @@ import { CustomerQuotationSessiTable } from './components/QuotationSessiTable/Cu
 import { ExecutorQuotationSessiTable } from './components/QuotationSessiTable/ExecutorQuotationSessiTable.jsx';
 import { PriseQuotationSessiTable } from './components/QuotationSessiTable/PriseQuotationSessiTable.jsx';
 import { ProductCard } from './components/ProductCard/ProductCard.jsx';
-import B2Bpurchases from './components/B2Bpurchases/B2Bpurchases.jsx';
+import { AddProduct } from './components/AddProduct/AddProduct.jsx';
+import { Contract } from './components/contract/Contract.jsx';
 
 function App() {
 
@@ -67,7 +68,9 @@ function App() {
             </Route>
 
               <Route path='/ProductCard' element={<ProductCard/>}/>
-              <Route path='/CreateB2B' element={<B2Bpurchases/>}/>
+
+              <Route path='/AddProduct' element={<AddProduct/>}/>
+              <Route path='/AddContract' element={<Contract/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
