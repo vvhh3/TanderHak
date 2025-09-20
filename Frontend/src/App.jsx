@@ -6,10 +6,6 @@ import { MainPage } from './components/MainPage/MainPage.jsx';
 import MainLaout from './Laouts/MainLaout.jsx';
 import FormCompany from './components/AddFormCompany/FormCompany.jsx';
 import Registration from './components/Registration/Registration.jsx';
-
-// import { Table } from './components/Table/Table.jsx';
-
-// import { Table } from './components/Table/Table.jsx';
 import Cookies from 'js-cookie'
 import { ContractTable } from './components/ContractTable/ContractTable.jsx';
 import { GeneralInformation } from './components/ContractTable/GeneralInformation.jsx';
@@ -25,7 +21,7 @@ import { PriseQuotationSessiTable } from './components/QuotationSessiTable/Prise
 import { ProductCard } from './components/ProductCard/ProductCard.jsx';
 import { AddProduct } from './components/AddProduct/AddProduct.jsx';
 import { Contract } from './components/contract/Contract.jsx';
-
+import B2Bpurchases from './components/B2Bpurchases/B2Bpurchases.jsx';
 function App() {
 
   const [companys,setCompanys] = useState([])
