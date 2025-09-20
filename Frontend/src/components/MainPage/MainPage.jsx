@@ -68,7 +68,7 @@ export function MainPage() {
             });
 
             const botResponse = res.data.response;
-            setMessages(prev => [...prev, { role: "bot", text: botResponse, rating:null }]);
+            setMessages(prev => [...prev, { role: "bot", text: botResponse, rating: null }]);
         } catch (err) {
             console.error(err);
             setMessages(prev => [...prev, { role: "bot", text: "Ошибка при запросе" }]);
@@ -92,7 +92,8 @@ export function MainPage() {
     };
 
     return (
-        <div className="mainPage">
+
+           <div className="mainPage">
             <div className='hManePage'>
                 <ReactTyped
                     strings={[
@@ -139,24 +140,6 @@ export function MainPage() {
                         backSpeed={30}   // скорость удаления (если есть цикл)
                         loop={true}     // повторять или нет
                     />
-
-            </div>
-            <div className="chatWindow">
-                {messages.map((msg, i) => (
-                    <div key={i} className={`message ${msg.role}`}>
-                        <span className="bubble">{msg.text}</span>
-                    </div>
-                ))}
-            </div>
-                
-            <div className="searchInputBlock">
-                <div className='typed'>
-                     <ReactTyped
-                        strings={suggestions}
-                        typeSpeed={50}   // скорость печати
-                        backSpeed={30}   // скорость удаления (если есть цикл)
-                        loop={true}     // повторять или нет
-                    />
                 </div>
                 <input
                     type="text"
@@ -182,35 +165,6 @@ export function MainPage() {
 
 
                 <button onClick={handleSubmit} className="sendButton">
-                    Отправить
-                </button>
-            </div>
-        </div>
-    );
-                <input
-                    type="text"
-                    value={input}
-                    onChange={handleChange}
-                    placeholder="Введите запрос..."
-                    className="searchInput"
-                />
-
-                {results.length > 0 && (
-                    <ul className="suggestionsList">
-                        {results.map((r, i) => (
-                            <li
-                                key={i}
-                                onClick={() => handleSuggestionClick(r)}
-                                className="suggestionItem"
-                            >
-                                {r}
-                            </li>
-                        ))}
-                    </ul>
-                )}
-
-
-    <button onClick={handleSubmit} className="sendButton">
                     Отправить
                 </button>
             </div>
