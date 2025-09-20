@@ -28,6 +28,7 @@ body {
 .hManePage {
     color: black;
     font-size: 20px;
+    margin-top: 20px;
 }
 
 .pManePage {
@@ -135,4 +136,7 @@ body {
 
 .sendButton:hover {
   background: #45a049;
+}
+.typed{
+  margin-left: 10px;
 }
