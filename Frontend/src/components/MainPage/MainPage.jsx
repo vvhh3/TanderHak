@@ -4,7 +4,7 @@ import axios from 'axios';
 import Fuse from "fuse.js";
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter, Scripts } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+
 export function MainPage() {
     const suggestions = [
         "поиск",

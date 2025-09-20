@@ -9,7 +9,7 @@ import { MainPage } from './components/MainPage/MainPage.jsx';
 import MainLaout from './Laouts/MainLaout.jsx';
 import FormCompany from './components/AddFormCompany/FormCompany.jsx';
 import { Contract } from './components/Contract/Contract.jsx';
-
+import { Table } from './components/Table/Table.jsx';
 function App() {
   const [companys,setCompanys] = useState([])
   return (
