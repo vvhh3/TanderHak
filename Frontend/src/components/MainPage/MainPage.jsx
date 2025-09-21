@@ -35,6 +35,40 @@ export function MainPage() {
     // const [estimation, setEstimation] = useState(null)
     // const [like, setLike] = useState();
     const navigate = useNavigate();
+
+
+function handleQuery(userInput) {
+  // варианты первого слова
+  const firstWordVariants = ["найди", "поиск", "ищи", "найти"];
+
+  // эталонная структура
+  const pattern = ["контракты", "компании"];
+
+  // разбиваем строку на слова
+  const words = userInput.trim().split(/\s+/);
+  const lowerWords = words.map(w => w.toLowerCase());
+
+  // проверяем первое слово на совпадение с любым вариантом
+  const firstWordOk = firstWordVariants.includes(lowerWords[0]);
+
+  // проверяем второе и третье слово
+  const restOk = pattern.every((word, i) => lowerWords[i + 1] === word);
+
+  if (firstWordOk && restOk) {
+    // название компании = всё, что идёт после первых 3 слов
+    const companyName = words.slice(3).join(" ");
+    const message = "найди  контракты компании"+" "+String(companyName)
+    setInput(message);
+    console.log(message)
+    
+  }
+  
+  
+}
+
+
+
+    
     useEffect(() => {
         const savedChat = Cookies.get("chatHistory");
         if (savedChat) {
@@ -99,7 +133,8 @@ export function MainPage() {
 //
     const handleSubmit = async () => {
         if (!input.trim()) return;
-
+        handleQuery(input)
+        
         setMessages(prev => [...prev, { role: "user", text: input }]);
         setLoading(true);
         try {
