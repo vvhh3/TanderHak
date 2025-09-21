@@ -14,15 +14,7 @@ export function Pay(){
                 <input className='searchInput'></input>
             </div>
             <div className='searchInputBlock'> 
-                <label className="labelBlock">ID контракта</label>
-                <input className='searchInput'></input>
-            </div>
-            <div className='searchInputBlock'> 
-                <label className="labelBlock">Сумма контракта</label>
-                <input className='searchInput'></input>
-            </div>
-            <div className='searchInputBlock'> 
-                <label className="labelBlock">Дата заключения контракта </label>
+                <label className="labelBlock">Сумма</label>
                 <input className='searchInput'></input>
             </div>
             <div className='searchInputBlock'> 

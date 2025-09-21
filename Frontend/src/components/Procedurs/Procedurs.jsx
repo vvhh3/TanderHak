@@ -14,15 +14,7 @@ export function Procedurs(){
                 <input className='searchInput'></input>
             </div>
             <div className='searchInputBlock'> 
-                <label className="labelBlock">ID контракта</label>
-                <input className='searchInput'></input>
-            </div>
-            <div className='searchInputBlock'> 
-                <label className="labelBlock">Сумма контракта</label>
-                <input className='searchInput'></input>
-            </div>
-            <div className='searchInputBlock'> 
-                <label className="labelBlock">Дата заключения контракта </label>
+                <label className="labelBlock">Сумма</label>
                 <input className='searchInput'></input>
             </div>
             <div className='searchInputBlock'> 
@@ -30,7 +22,7 @@ export function Procedurs(){
                 <input className='searchInput'></input>
             </div>
             <div className='searchInputBlock'> 
-                <label className="labelBlock">ИНН заказчика   </label>
+                <label className="labelBlock">ИНН заказчика</label>
                 <input className='searchInput'></input>
             </div>
             <div className='searchInputBlock'> 
@@ -38,11 +30,7 @@ export function Procedurs(){
                 <input className='searchInput'></input>
             </div>
             <div className='searchInputBlock'> 
-                <label className="labelBlock">ИНН поставщика </label>
-                <input className='searchInput'></input>
-            </div>
-            <div className='searchInputBlock'> 
-                <label className="labelBlock">Закон-основание </label>
+                <label className="labelBlock">ИНН поставщика</label>
                 <input className='searchInput'></input>
             </div>
             <div className="buttonBlock">

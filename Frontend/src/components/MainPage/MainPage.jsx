@@ -1,11 +1,12 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './MainPage.css';
 import axios from 'axios';
 import Fuse from "fuse.js";
 import { useNavigate } from 'react-router-dom';
 import { BrowserRouter, Scripts } from "react-router-dom";
 import { ReactTyped } from "react-typed";
+import Cookies from "js-cookie";
 export function MainPage() {
     const suggestions = [
         "поиск", "найди", "поищи", "ищи", "найти", "покажи", "отыщи", "отыскать", "как", "где",// Поиск
@@ -29,10 +30,20 @@ export function MainPage() {
     const [input, setInput] = useState("");
     const [results, setResults] = useState([]);
     const [messages, setMessages] = useState([]);
-    const [estimation, setEstimation] = useState(null)
-    const [like, setLike] = useState();
+    // const [estimation, setEstimation] = useState(null)
+    // const [like, setLike] = useState();
     const navigate = useNavigate();
-
+    useEffect(() => {
+        const savedChat = Cookies.get("chatHistory");
+        if (savedChat) {
+            setMessages(JSON.parse(savedChat));
+        }
+    }, []);
+    useEffect(() => {
+        if (messages.length > 0) {
+            Cookies.set("chatHistory", JSON.stringify(messages), { expires: 7 });
+        }
+    }, [messages]);
     const handleChange = (e) => {
         const value = e.target.value;
         setInput(value);
@@ -65,8 +76,33 @@ export function MainPage() {
             const res = await axios.post("http://45.150.8.176:8080/api/chat", {
                 user_id: 1,
                 message: input,
-            });
+            }); 
 
+            const intention = res.data.response.toLowerCase();
+
+            if (intention.includes("создать")) {
+                navigate("/create");//KS
+            } else if (intention.includes("сделай")) {
+                navigate("/ContractTable");//Создать профиль компании
+            } else if (intention.includes("сделай")) {
+                navigate("/company");
+            }else if (intention.includes("сделай")) {
+                navigate("/QuotationSessiTable");//Вывод кс
+            }else if (intention.includes("сделай")) {
+                navigate("/ProductCard");//Вывод продукта
+            }else if (intention.includes("сделай")) {
+                navigate("/AddProduct");//добавить продукт
+            }else if (intention.includes("сделай")) {
+                navigate("/AddContract");//добавить контракт
+            }else if (intention.includes("сделай")) {
+                navigate("/CreateB2B");//добавить В2В
+            }else if (intention.includes("сделай")) {
+                navigate("/Pay");//закупка по потребностям
+            }else if (intention.includes("сделай")) {
+                navigate("/AddProcedurs");//добавить конкурентные процедуры
+            }else {
+                alert("Намерение не распознано: " + intention);
+            }
             const botResponse = res.data.response;
             setMessages(prev => [...prev, { role: "bot", text: botResponse, rating: null }]);
         } catch (err) {
@@ -93,7 +129,7 @@ export function MainPage() {
 
     return (
 
-           <div className="mainPage">
+        <div className="mainPage">
             <div className='hManePage'>
                 <ReactTyped
                     strings={[

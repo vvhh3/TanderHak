@@ -1,6 +1,7 @@
 import { useState } from "react";
 import './FormCompany.css'
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const FormCompany = ({companys,setCompanys}) => {
     const [company, setCompany] = useState({ title: '', type_organiz: '',  ogrn: '', inn: '' })
     const saveCompany = async () => {
@@ -8,11 +9,8 @@ const FormCompany = ({companys,setCompanys}) => {
             const payload = {
                 title: company.title,
                 type_organiz: company.type_organiz,
-                region: company.region,
-                kpp: company.kpp,
                 ogrn: company.ogrn,
                 inn: company.inn,
-                description: company.description
             }
             console.log(payload)
             // const res = await axios.post("http://45.150.8.176:8080/api/chat", payload)
@@ -29,6 +27,10 @@ const FormCompany = ({companys,setCompanys}) => {
         } catch (error) {
             console.log(error)
         }
+    }
+      const navigate = useNavigate();
+    const handleClose = () =>{
+        navigate('/')
     }
     return (
         <div className="blockContractConteiner">
@@ -65,7 +67,7 @@ const FormCompany = ({companys,setCompanys}) => {
                     <input className='searchInput' placeholder="Описание" value={company.description} onChange={e => setCompany({ ...company, description: e.target.value })}></input>
                 </div>
                 <div className="buttonBlock">
-                    <button className="buttonCancel">Отмена</button>
+                    <button className="buttonCancel" onClick={handleClose}>Отмена</button>
                     <button className="buttonAccept" onClick={saveCompany}>Создать</button>
                 </div>
             </div>

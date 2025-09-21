@@ -22,6 +22,8 @@ import { ProductCard } from './components/ProductCard/ProductCard.jsx';
 import { AddProduct } from './components/AddProduct/AddProduct.jsx';
 import { Contract } from './components/contract/Contract.jsx';
 import B2Bpurchases from './components/B2Bpurchases/B2Bpurchases.jsx';
+import Pay from'./components/Pay/Pay.jsx'
+import Procedurs from'./components/Procedurs/Procedurs.jsx'
 function App() {
 
   const [companys,setCompanys] = useState([])
@@ -67,7 +69,10 @@ function App() {
 
               <Route path='/AddProduct' element={<AddProduct/>}/>
               <Route path='/AddContract' element={<Contract/>}/>
-          </Route>
+              <Route path='/CreateB2B' element={<B2Bpurchases/>}/>
+              <Route path='/Pay' element={<Pay/>}/>
+              <Route path='/AddProcedurs' element={<Procedurs/>}/>
+        </Route>
         </Routes>
       </BrowserRouter>
     </>

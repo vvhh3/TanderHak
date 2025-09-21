@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import './ksForm.css'
-
+import { useNavigate } from "react-router-dom"; 
 const AddKSForm = () => {
   const [ksList, setKsList] = useState([]);
   const [ksForm, setKsForm] = useState({
     name: "",
-    customerName: "",
+    customerName: "",// заказчик
     customerINN: "",
-    supplierName: "",
+    supplierName: "",// поставщик
     supplierINN: "",
     amount: "",
     startDate: "",
-    endDate: "",
-    category: "",
     legalBasis: ""
   });
+  const navigate = useNavigate();
   //   useEffect(() => {
   //   const fetchKS = async () => {
   //     try {
@@ -60,6 +59,9 @@ const AddKSForm = () => {
       alert("Ошибка при сохранении КС");
     }
   };
+  const handleClose = () =>{
+    navigate("/")
+  }
 
   return (
       <div className="blockContractConteiner">
@@ -103,7 +105,7 @@ const AddKSForm = () => {
                 </select>
             </div>
             <div className="buttonBlock">
-                <button className="buttonCancel">Отмена</button>
+                <button className="buttonCancel" onClick={handleClose}>Отмена</button>
                 <button className="buttonAccept" onClick={saveKS}>Создать</button>
             </div>
         </div>
