@@ -1,10 +1,13 @@
 "./ContractTable.css"
-export function Price(){
 
+import { useOutletContext } from "react-router-dom";
+
+export function Price(){
+    const {contract} = useOutletContext
     return(
     <div className="blockTabelSpecifications">
         <div className="blockSpecifications">                  
-            <header className="headerBlockSpecifications" >Сумма контракта:</header>
+            <header className="headerBlockSpecifications" >Сумма контракта:{contract.Amount}</header>
     
         </div>
     </div>

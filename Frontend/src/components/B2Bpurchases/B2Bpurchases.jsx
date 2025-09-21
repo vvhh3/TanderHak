@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import '../KsForm/KsForm.css'
-
+import { useNavigate } from "react-router-dom";
 const B2Bpurchases = () => {
   const [ksList, setKsList] = useState([]);
   const [B2B, setB2B] = useState({
@@ -48,7 +48,10 @@ const B2Bpurchases = () => {
       alert("Ошибка при сохранении КС");
     }
   };
-
+      const navigate = useNavigate();
+    const handleClose = () =>{
+        navigate('/')
+    }
   return (
       <div className="blockContractConteiner">
         <div className="blockContract"> 
@@ -72,7 +75,7 @@ const B2Bpurchases = () => {
                 <input className='searchInput'  placeholder="Реестровый номер"  value={B2B.customerINN} onChange={e => setB2B({ ...B2B, customerINN: e.target.value })} ></input>
             </div>
             <div className="buttonBlock">
-                <button className="buttonCancel">Отмена</button>
+                <button className="buttonCancel" onClick={handleClose}>Отмена</button>
                 <button className="buttonAccept" onClick={saveKS}>Создать</button>
             </div>
         </div>

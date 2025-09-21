@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 export function MainPage() {
     const suggestions = [
         "поиск", "найди", "поищи", "ищи", "найти", "покажи", "отыщи", "отыскать", "как", "где",// Поиск
+        "поиск контракты компании", "найди контракты компании ", "поищи контракты компании", "ищи контракты компании", "найти контракты компании", "покажи контракты компании", "отыщи контракт компании", "отыскать контракты компании",// Поиск по контрактам (наименнованию поставщика)
         "создай профиль компании", "создать компанию", "зарегистрируй компанию", "зарегистрировать фирму", "оформи компанию", "добавь компанию", "заведи новую компанию", "создать профиль компании",//Компания
         "создай новую закупку", "создать закупку", "оформи закупку", "добавь закупку", "начни закупку", "сделай закупку", "зарегистрируй закупку", "создать новую закупку",//Закупки
         "создай новую прямую закупку", "создать прямую закупку", "оформи прямую закупку", "добавь прямую закупку", "начни прямую закупку", "сделай прямую закупку", "зарегистрируй прямую закупку", "создать новую прямую закупку",//Прямая закупка
@@ -30,6 +31,7 @@ export function MainPage() {
     const [input, setInput] = useState("");
     const [results, setResults] = useState([]);
     const [messages, setMessages] = useState([]);
+    const [loading, setLoading] = useState(false);
     // const [estimation, setEstimation] = useState(null)
     // const [like, setLike] = useState();
     const navigate = useNavigate();
@@ -67,47 +69,64 @@ export function MainPage() {
         setResults([]);
     };
 
+
+
+    const routesMap = {
+        "create:ks": "/create",                // создать КС
+        "create:company": "/company",          // создать компанию
+        "create:contract": "/AddContract",     // создать контракт
+        "create:product": "/AddProduct",       // добавить продукт
+        "create:b2b": "/CreateB2B",            // создать B2B
+        "create:procedure": "/AddProcedurs",   // конкурентные процедуры
+        "create:pay": "/Pay",                  // закупка по потребностям
+
+        "search:order": "/ContractTable",    // показать компанию
+        "search:ks": "/QuotationSessiTable",   // показать КС
+        "search:product": "/ProductCard",      // показать продукт
+    };
+
+    function handleIntention(action, objectType, navigate) {
+        const key = `${action}:${objectType}`; // напр. "create:company"
+
+        if (routesMap[key]) {
+            navigate(routesMap[key]);
+        } else {
+            alert("Намерение не распознано: " + key);
+        }
+    }
+
+
+//
     const handleSubmit = async () => {
         if (!input.trim()) return;
 
         setMessages(prev => [...prev, { role: "user", text: input }]);
-
+        setLoading(true);
         try {
             const res = await axios.post("http://45.150.8.176:8080/api/chat", {
                 user_id: 1,
                 message: input,
-            }); 
+            });
 
-            const intention = res.data.response.toLowerCase();
+            console.log("Ответ бэка:", res.data);
 
-            if (intention.includes("создать")) {
-                navigate("/create");//KS
-            } else if (intention.includes("сделай")) {
-                navigate("/ContractTable");//Создать профиль компании
-            } else if (intention.includes("сделай")) {
-                navigate("/company");
-            }else if (intention.includes("сделай")) {
-                navigate("/QuotationSessiTable");//Вывод кс
-            }else if (intention.includes("сделай")) {
-                navigate("/ProductCard");//Вывод продукта
-            }else if (intention.includes("сделай")) {
-                navigate("/AddProduct");//добавить продукт
-            }else if (intention.includes("сделай")) {
-                navigate("/AddContract");//добавить контракт
-            }else if (intention.includes("сделай")) {
-                navigate("/CreateB2B");//добавить В2В
-            }else if (intention.includes("сделай")) {
-                navigate("/Pay");//закупка по потребностям
-            }else if (intention.includes("сделай")) {
-                navigate("/AddProcedurs");//добавить конкурентные процедуры
-            }else {
-                alert("Намерение не распознано: " + intention);
+            const action = res.data.action?.toLowerCase() || "";
+            const objectType = res.data.objectType?.toLowerCase() || "";
+
+            if (action && objectType) {
+                handleIntention(action, objectType, navigate);
             }
-            const botResponse = res.data.response;
-            setMessages(prev => [...prev, { role: "bot", text: botResponse, rating: null }]);
+
+            // Добавляем сообщение бота
+            setMessages(prev => [
+                ...prev,
+                { role: "bot", text: res.data.response || "Готово", rating: null },
+            ]);
         } catch (err) {
             console.error(err);
             setMessages(prev => [...prev, { role: "bot", text: "Ошибка при запросе" }]);
+        } finally {
+            setLoading(false); 
         }
 
         setInput("");
@@ -146,19 +165,20 @@ export function MainPage() {
                 {messages.map((msg, i) => (
                     <div key={i} className={`message ${msg.role}`}>
                         <p>{msg.text}</p>
+
                         {msg.role === "bot" && (
                             <div className="rating-buttons">
                                 <button
                                     className={msg.rating === true ? "active" : ""}
                                     onClick={() => handleRateMessage(i, true)}
-                                    disabled={msg.rating !== null} // блокируем кнопку если оценка есть
+                                    disabled={msg.rating !== null}
                                 >
                                     👍
                                 </button>
                                 <button
                                     className={msg.rating === false ? "active" : ""}
                                     onClick={() => handleRateMessage(i, false)}
-                                    disabled={msg.rating !== null} // блокируем кнопку если оценка есть
+                                    disabled={msg.rating !== null}
                                 >
                                     👎
                                 </button>
@@ -166,6 +186,11 @@ export function MainPage() {
                         )}
                     </div>
                 ))}
+                {loading && (
+                    <div className="message bot">
+                        <p>🤔 Думаю…</p>
+                    </div>
+                )}
             </div>
 
             <div className="searchInputBlock">
@@ -177,14 +202,20 @@ export function MainPage() {
                         loop={true}     // повторять или нет
                     />
                 </div>
-                <input
-                    type="text"
-                    value={input}
-                    onChange={handleChange}
-                    placeholder="Введите запрос..."
-                    className="searchInput"
-                />
+                <div className='dev'>
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={handleChange}
+                        placeholder="Введите запрос..."
+                        className="searchInput"
+                    />
 
+                    <button onClick={handleSubmit} className="sendButton">
+                        Отправить
+                    </button>
+
+                </div>
                 {results.length > 0 && (
                     <ul className="suggestionsList">
                         {results.map((r, i) => (
@@ -198,11 +229,6 @@ export function MainPage() {
                         ))}
                     </ul>
                 )}
-
-
-                <button onClick={handleSubmit} className="sendButton">
-                    Отправить
-                </button>
             </div>
         </div>
     );

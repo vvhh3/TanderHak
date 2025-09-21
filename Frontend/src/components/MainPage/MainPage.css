@@ -126,6 +126,7 @@ body {
 }
 
 .sendButton {
+  height: 30px;
   margin-top: 10px;
   padding: 8px 12px;
   background: #4CAF50;
@@ -160,7 +161,12 @@ body {
 
 .rating-buttons button:nth-child(2).active {
   color: red;
+}
 .typed{
  margin-left: 25px;
 }
+.dev{
+  display: flex;
+  align-items: center;
+  width: 700px;
 }
