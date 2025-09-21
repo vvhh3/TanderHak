@@ -177,12 +177,13 @@ export function MainPage() {
                         loop={true}     // повторять или нет
                     />
                 </div>
+                
                 <input
                     type="text"
                     value={input}
                     onChange={handleChange}
                     placeholder="Введите запрос..."
-                    className="searchInput"
+                    className="searchInput1"
                 />
 
                 {results.length > 0 && (
