@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { BrowserRouter, Scripts } from "react-router-dom";
 import { ReactTyped } from "react-typed";
 import Cookies from "js-cookie";
+// import { useNavigate } from "react-router-dom";
 export function MainPage() {
     const suggestions = [
         "поиск", "найди", "поищи", "ищи", "найти", "покажи", "отыщи", "отыскать", "как", "где",// Поиск
@@ -23,7 +24,6 @@ export function MainPage() {
         "найди пользователя ивана и поменяй почту на (вставить на любую почту)",
         "создай профиль сотруднику ивану",
         "удали профиль сотруднику ивану",
-        ,
     ];
 
 
@@ -32,10 +32,10 @@ export function MainPage() {
     const [results, setResults] = useState([]);
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
     // const [estimation, setEstimation] = useState(null)
     // const [like, setLike] = useState();
-    const navigate = useNavigate();
-
+    
 
 function handleQuery(userInput) {
   // варианты первого слова
@@ -66,10 +66,7 @@ function handleQuery(userInput) {
   
 }
 
-
-
-    
-    useEffect(() => {
+useEffect(() => {
         const savedChat = Cookies.get("chatHistory");
         if (savedChat) {
             setMessages(JSON.parse(savedChat));
@@ -90,7 +87,7 @@ function handleQuery(userInput) {
         }
 
         const words = value.trim().split(/\s+/);
-        const lastWord = words[words.length - 1] || "";
+        const lastWord = words[words.length - 1];
         const matches = fuse.search(lastWord);
         setResults(matches.map((m) => m.item));
     };
@@ -138,15 +135,17 @@ function handleQuery(userInput) {
         setMessages(prev => [...prev, { role: "user", text: input }]);
         setLoading(true);
         try {
+            console.log({input})
             const res = await axios.post("http://45.150.8.176:8080/api/chat", {
                 user_id: 1,
-                message: input,
-            });
+                message: input
+                
+            }); 
+            // Cookies.set('response', JSON.stringify(input), { expires: 7 });
+            console.log("Ответ бэка1:", res.data);
 
-            console.log("Ответ бэка:", res.data);
-
-            const action = res.data.action?.toLowerCase() || "";
-            const objectType = res.data.objectType?.toLowerCase() || "";
+            const action = res.data.action?.toLowerCase();
+            const objectType = res.data.objectType?.toLowerCase();
 
             if (action && objectType) {
                 handleIntention(action, objectType, navigate);
@@ -155,7 +154,7 @@ function handleQuery(userInput) {
             // Добавляем сообщение бота
             setMessages(prev => [
                 ...prev,
-                { role: "bot", text: res.data.response || "Готово", rating: null },
+                { role: "bot", text: res.data.response ||  "Готово", rating: null },
             ]);
         } catch (err) {
             console.error(err);
@@ -194,8 +193,7 @@ function handleQuery(userInput) {
                     backSpeed={30}   // скорость удаления (если есть цикл)
                     loop={false}     // повторять или нет
                 />
-
-            </div>
+</div>
             <div className="chatWindow">
                 {messages.map((msg, i) => (
                     <div key={i} className={`message ${msg.role}`}>

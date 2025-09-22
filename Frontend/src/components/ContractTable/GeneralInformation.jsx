@@ -12,6 +12,7 @@ export function GeneralInformation(){
                         
                             <label className="labelBlockSpecifications">Дата заключения контракта:{contract.Date}</label>
                             <label className="labelBlockSpecifications">Закон-основание:{contract.Law}</label>
+                            <label className="labelBlockSpecifications">Цена:{contract.Amount}</label>
                         </div>
                     </div>
                 </div>
